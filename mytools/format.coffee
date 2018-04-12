@@ -42,6 +42,5 @@ go = () ->
   _.forEach arrOfStrings, (func) ->
     str += "{func: #{func}, name: '#{func}'},\n"
   console.log str
-  console.log 'WTF'
 
 go()
