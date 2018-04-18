@@ -22,15 +22,22 @@ function testWithPredicate(input, output, predicate, func) {
   return 'failure';
 }
 
-function buildNtoTheMaxPredicates(input, predicates) {
-  if (_.isEmpty(input)) return;
-  predicates.push(input);
-  _.forEach(input, (element, idx) => {
-    clone = _.clone(input);
-    clone.splice(idx, 1);
-    buildNtoTheMaxPredicates(clone, predicates);
+function comboHelper(arrClone, element) {
+  var combos = [];
+  _.forEach(arrClone, (rest) => {
+    combos.push([...rest, element]);
   });
-  return _.uniqWith(predicates, _.isEqual);
+  combos.push([element]);
+  return combos;
+}
+
+function generateAllCombinations(input) {
+  var predicates = [], indices = [];
+  _.forEach(input, (val, idx) => {
+    predicates = _.concat(predicates, comboHelper(_.clone(predicates), val));
+    indices = _.concat(indices, comboHelper(_.clone(indices), idx));
+  });
+  return _.concat(predicates, indices);
 }
 
 function generateArrayPredicates(input, output) {
@@ -40,8 +47,7 @@ function generateArrayPredicates(input, output) {
   predicates.push(_.difference(input, output));
   predicates.push(_.difference(output, input));
   predicates.push(_.intersection(input, Array.isArray(output) ? output : [output]));
-  if (input.length <= 6)
-    predicates = _.concat(predicates, buildNtoTheMaxPredicates(input, []));
+  predicates = _.concat(predicates, generateAllCombinations(input));
   while (i-- > -1 * input.length) {
     predicates.push(i);
   }

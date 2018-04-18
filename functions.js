@@ -23,16 +23,16 @@ functions = {
     {func: _.indexOf, name: '_.indexOf'},
     {func: _.initial, name: '_.initial'},
     {func: _.intersection, name: '_.intersection'}, //TODO Support multiple argument functions
-    {func: _.intersectionBy, name: '_.intersectionBy'},
-    {func: _.intersectionWith, name: '_.intersectionWith'},
+    {func: _.intersectionBy, name: '_.intersectionBy'}, //TODO
+    {func: _.intersectionWith, name: '_.intersectionWith'}, //TODO
     {func: _.join, name: '_.join'},
     {func: _.last, name: '_.last'},
     {func: _.lastIndexOf, name: '_.lastIndexOf'},
     {func: _.nth, name: '_.nth'},
     {func: _.pull, name: '_.pull', mutates: true},
     {func: _.pullAll, name: '_.pullAll', mutates: true},
-    {func: _.pullAllBy, name: '_.pullAllBy', mutates: true},
-    {func: _.pullAllWith, name: '_.pullAllWith', mutates: true},
+    {func: _.pullAllBy, name: '_.pullAllBy', mutates: true}, //TODO Support itaratee functions
+    {func: _.pullAllWith, name: '_.pullAllWith', mutates: true}, //TODO Support comparator functions
     {func: _.pullAt, name: '_.pullAt', mutates: true},
     {func: _.remove, name: '_.remove', mutates: true},
     {func: _.reverse, name: '_.reverse', mutates: true},

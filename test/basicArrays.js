@@ -206,9 +206,22 @@ describe('Arrays', () => {
       });
     });
     describe('_.pullAll', () => {
-      it('with many values to remove', () => {
+      it('with an array under 7 elements', () => {
         var matches = lomatch.LoMatch([1, 2, 3, 3, 5, 3], [1, 5], []);
         var expectedMatch = {func: '_.pullAll', predicates: [2, 3]};
+        expect(matches).to.deep.include(expectedMatch);
+      });
+      it("it can't handle an array of 7 elements or greater", () => {
+        var matches = lomatch.LoMatch([1, 2, 3, 3, 5, 3, 3], [1, 5], []);
+        var expectedMatch = {func: '_.pullAll', predicates: [2, 3]};
+        expect(matches).to.deep.include(expectedMatch);
+      });
+    });
+    describe('_.pullAt', () => {
+      it('with an array under 7 elements', () => {
+        var matches = lomatch.LoMatch(['a', 'b', 'c', 'd'], ['a', 'c'], []);
+        console.log(matches);
+        var expectedMatch = {func: '_.pullAt', predicates: [0, 2]};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
