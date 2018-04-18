@@ -22,20 +22,16 @@ function testWithPredicate(input, output, predicate, func) {
   return 'failure';
 }
 
-function comboHelper(arrClone, element) {
-  var combos = [];
-  _.forEach(arrClone, (rest) => {
-    combos.push([...rest, element]);
-  });
-  combos.push([element]);
-  return combos;
-}
-
 function generateAllCombinations(input) {
-  var predicates = [], indices = [];
+  predicates = [];
+  indices = [];
   _.forEach(input, (val, idx) => {
-    predicates = _.concat(predicates, comboHelper(_.clone(predicates), val));
-    indices = _.concat(indices, comboHelper(_.clone(indices), idx));
+    _.forEach(_.clone(predicates), (rest, index) => {
+      predicates.push([...rest, val]);
+      indices.push([...indices[index], idx]);
+    });
+    predicates.push([val]);
+    indices.push([idx]);
   });
   return _.concat(predicates, indices);
 }
