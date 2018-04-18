@@ -22,7 +22,7 @@ functions = {
     {func: _.head, name: '_.head'},
     {func: _.indexOf, name: '_.indexOf'},
     {func: _.initial, name: '_.initial'},
-    {func: _.intersection, name: '_.intersection'},
+    {func: _.intersection, name: '_.intersection'}, //TODO Support multiple argument functions
     {func: _.intersectionBy, name: '_.intersectionBy'},
     {func: _.intersectionWith, name: '_.intersectionWith'},
     {func: _.join, name: '_.join'},
