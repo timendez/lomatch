@@ -4,7 +4,7 @@
   "description": "A tool that figures out what LoDash function you should use given an input, desired output, and predicate.",
   "main": "lomatch.js",
   "scripts": {
-    "test": "mocha --timeout 3000"
+    "test": "mocha --timeout 5000"
   },
   "repository": {
     "type": "git",
