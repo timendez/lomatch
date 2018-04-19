@@ -22,7 +22,7 @@ functions = {
     {func: _.head, name: '_.head'},
     {func: _.indexOf, name: '_.indexOf'},
     {func: _.initial, name: '_.initial'},
-    {func: _.intersection, name: '_.intersection'}, //TODO Support multiple argument functions
+    {func: _.intersection, name: '_.intersection'}, //TODO Support a single array parameter of multiple values
     {func: _.intersectionBy, name: '_.intersectionBy'}, //TODO
     {func: _.intersectionWith, name: '_.intersectionWith'}, //TODO
     {func: _.join, name: '_.join'},
@@ -31,41 +31,41 @@ functions = {
     {func: _.nth, name: '_.nth'},
     {func: _.pull, name: '_.pull', mutates: true},
     {func: _.pullAll, name: '_.pullAll', mutates: true},
-    {func: _.pullAllBy, name: '_.pullAllBy', mutates: true}, //TODO Support itaratee functions
+    {func: _.pullAllBy, name: '_.pullAllBy', mutates: true}, //TODO Support iteratee functions
     {func: _.pullAllWith, name: '_.pullAllWith', mutates: true}, //TODO Support comparator functions
     {func: _.pullAt, name: '_.pullAt', mutates: true},
-    {func: _.remove, name: '_.remove', mutates: true},
+    {func: _.remove, name: '_.remove', mutates: true}, //TODO Support function predicates
     {func: _.reverse, name: '_.reverse', mutates: true},
-    {func: _.slice, name: '_.slice'},
+    {func: _.slice, name: '_.slice'}, // TODO Support multiple argument functions
     {func: _.sortedIndex, name: '_.sortedIndex'},
-    {func: _.sortedIndexBy, name: '_.sortedIndexBy'},
+    {func: _.sortedIndexBy, name: '_.sortedIndexBy'}, //TODO Support multiple argument functions, function predicates
     {func: _.sortedIndexOf, name: '_.sortedIndexOf'},
     {func: _.sortedLastIndex, name: '_.sortedLastIndex'},
-    {func: _.sortedLastIndexBy, name: '_.sortedLastIndexBy'},
+    {func: _.sortedLastIndexBy, name: '_.sortedLastIndexBy'}, //TODO Support multiple argument functions, function predicates
     {func: _.sortedLastIndexOf, name: '_.sortedLastIndexOf'},
     {func: _.sortedUniq, name: '_.sortedUniq'},
-    {func: _.sortedUniqBy, name: '_.sortedUniqBy'},
+    {func: _.sortedUniqBy, name: '_.sortedUniqBy'}, //TODO Suport iteratee functions
     {func: _.tail, name: '_.tail'},
     {func: _.take, name: '_.take'},
     {func: _.takeRight, name: '_.takeRight'},
-    {func: _.takeRightWhile, name: '_.takeRightWhile'},
-    {func: _.takeWhile, name: '_.takeWhile'},
-    {func: _.union, name: '_.union'},
-    {func: _.unionBy, name: '_.unionBy'},
-    {func: _.unionWith, name: '_.unionWith'},
+    {func: _.takeRightWhile, name: '_.takeRightWhile'}, //TODO Support identity functions
+    {func: _.takeWhile, name: '_.takeWhile'}, //TODO Support identity functions
+    {func: _.union, name: '_.union'}, //TODO Support a single array parameter of multiple values
+    {func: _.unionBy, name: '_.unionBy'}, //TODO
+    {func: _.unionWith, name: '_.unionWith'}, //TODO
     {func: _.uniq, name: '_.uniq'},
     {func: _.uniqBy, name: '_.uniqBy'},
-    {func: _.uniqWith, name: '_.uniqWith'},
+    {func: _.uniqWith, name: '_.uniqWith'}, //TODO Support comparators
     {func: _.unzip, name: '_.unzip'},
-    {func: _.unzipWith, name: '_.unzipWith'},
-    {func: _.without, name: '_.without'},
+    {func: _.unzipWith, name: '_.unzipWith'}, //TODO Support identity arguments
+    {func: _.without, name: '_.without'}, //TODO Support multiple arguments
     {func: _.xor, name: '_.xor'},
-    {func: _.xorBy, name: '_.xorBy'},
-    {func: _.xorWith, name: '_.xorWith'},
-    {func: _.zip, name: '_.zip'},
-    {func: _.zipObject, name: '_.zipObject'},
-    {func: _.zipObjectDeep, name: '_.zipObjectDeep'},
-    {func: _.zipWith, name: '_.zipWith'},
+    {func: _.xorBy, name: '_.xorBy'}, //TODO Support multiple arrays and a comparator
+    {func: _.xorWith, name: '_.xorWith'}, //TODO
+    {func: _.zip, name: '_.zip'}, //TODO Support multiple arrays
+    {func: _.zipObject, name: '_.zipObject'}, //TODO Support complex predicate generation
+    {func: _.zipObjectDeep, name: '_.zipObjectDeep'}, //TODO
+    {func: _.zipWith, name: '_.zipWith'}, //TODO Support multiple arguments, identity iteratees
   ],
   collection: [
     {func: _.countBy, name: '_.countBy'},

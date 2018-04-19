@@ -2,19 +2,19 @@ const _ = require('lodash');
 const functions = require('./functions.js');
 
 function testWithoutPredicate(input, output, func) {
-  clone = _.clone(input);
+  clone = _.cloneDeep(input);
   return _.isEqual(output, func(clone)) || (_.isEqual(output, clone) && !_.isEqual(input, clone));
 }
 
 function testWithPredicate(input, output, predicate, func) {
-  clone1 = _.clone(input);
-  clone2 = _.clone(input);
-  clone3 = _.clone(input);
+  clone1 = _.cloneDeep(input);
+  clone2 = _.cloneDeep(input);
+  clone3 = _.cloneDeep(input);
   if (_.isEqual(output, func(clone1, predicate)) || (_.isEqual(output, clone1) && !_.isEqual(input, clone1))) {
     return predicate;
   }
   else if (_.isEqual(output, func(clone2, predicate, 0)) || (_.isEqual(output, clone2) && !_.isEqual(input, clone2))) {
-    return [predicate, 0]
+    return [predicate, 0];
   }
   else if (_.isEqual(output, func(clone3, predicate, 0, 0)) || (_.isEqual(output, clone3) && !_.isEqual(input, clone3))) {
     return [predicate, 0, 0];
@@ -95,23 +95,12 @@ function matchArray(input, output, predicates) {
   return matches;
 }
 
-function LoMatch(input, output, predicate) {
+function LoMatch(input, output, predicates) {
   if (Array.isArray(input)) {
-    return matchArray(input, output, predicate);
+    return matchArray(input, output, predicates);
   }
   console.log(`Invalid input type or format ${typeof input}`);
 }
-
-// console.log(LoMatch(['a', 'b', 'c', 'a', 'b', 'c'], ['b', 'b'], []));
-// console.log(LoMatch([1, 2, 3], [[1], [1, 2], [1, 2, 3], [2, 3], [1, 3], [2], [3]], [])) //pullAll
-console.log(LoMatch([1, 2, 3, 3, 5, 3], [1, 5], [])); //pullAll with predicate [2, 3]
-// console.log(LoMatch([1, 2, [3, 4, [5, [6]]]], [1, 2, 3, 4, 5, 6], []));
-// console.log(LoMatch(inputt, outputt, [{ 'user': 'barney', 'active': false }]));
-// console.log(LoMatch([1, 2, 3], [1, 2, 3], [], false));
-// console.log(LoMatch([{'yep': 1}, {'yep': 2}, {'yep': 3}, {'yep': 4}], 1, []));
-// console.log(LoMatch([2, 1, 5], [1], [], false));
-// console.log(LoMatch(['a', 'b'], ['a', 'b', 'c', 'd'], [], false));
-// console.log(LoMatch([5, 'tacos'], 'tacos', [], false));
 
 module.exports = {
   LoMatch,
