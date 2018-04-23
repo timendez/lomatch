@@ -27,8 +27,19 @@ function match(input, output, predicates, funcs) {
   return matches;
 }
 
+function matchLang(input, output) {
+  var matches = [];
+  _.forEach(functions.funcs.lang, func => {
+    if (test.testWithoutPredicate(input, output, func.func)) {
+      return matches.push({func: func.name});
+    }
+  });
+  return matches;
+}
+
 function LoMatch(input, output, predicates) {
   var funcs;
+
   if (Array.isArray(input)) {
     predicates = _.concat(predicates, generate.generateArrayPredicates(input, output));
     funcs = functions.funcs.array;
@@ -38,10 +49,7 @@ function LoMatch(input, output, predicates) {
     funcs = functions.funcs.string;
   }
 
-  if (!funcs)
-    console.log(`Invalid input type or format ${typeof input}`);
-
-  return match(input, output, predicates, funcs);
+  return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
 }
 
 module.exports = {

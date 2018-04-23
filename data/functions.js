@@ -129,11 +129,11 @@ functions = {
     {func: _.cloneDeep, name: '_.cloneDeep'},
     {func: _.cloneDeepWith, name: '_.cloneDeepWith'},
     {func: _.cloneWith, name: '_.cloneWith'},
-    {func: _.conformsTo, name: '_.conformsTo'},
-    {func: _.eq, name: '_.eq'},
-    {func: _.gt, name: '_.gt'},
-    {func: _.gte, name: '_.gte'},
-    {func: _.isArguments, name: '_.isArguments'},
+    {func: _.conformsTo, name: '_.conformsTo'}, //TODO source object of property
+    {func: _.eq, name: '_.eq'}, //TODO decide if we want to support
+    {func: _.gt, name: '_.gt'}, //TODO
+    {func: _.gte, name: '_.gte'}, //TODO
+    {func: _.isArguments, name: '_.isArguments'}, //TODO decide if we want to support ANY _.is- function
     {func: _.isArray, name: '_.isArray'},
     {func: _.isArrayBuffer, name: '_.isArrayBuffer'},
     {func: _.isArrayLike, name: '_.isArrayLike'},
