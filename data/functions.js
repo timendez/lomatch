@@ -263,22 +263,22 @@ functions = {
     {func: _.padStart, name: '_.padStart'},
     {func: _.parseInt, name: '_.parseInt'},
     {func: _.repeat, name: '_.repeat'},
-    {func: _.replace, name: '_.replace'},
+    {func: _.replace, name: '_.replace'}, //TODO multiple arguments
     {func: _.snakeCase, name: '_.snakeCase'},
-    {func: _.split, name: '_.split'},
+    {func: _.split, name: '_.split'}, //TODO multiple arguments
     {func: _.startCase, name: '_.startCase'},
     {func: _.startsWith, name: '_.startsWith'},
-    {func: _.template, name: '_.template'},
+    {func: _.template, name: '_.template'}, //TODO good luck
     {func: _.toLower, name: '_.toLower'},
     {func: _.toUpper, name: '_.toUpper'},
-    {func: _.trim, name: '_.trim'},
+    {func: _.trim, name: '_.trim'}, //TODO multiple arguments
     {func: _.trimEnd, name: '_.trimEnd'},
     {func: _.trimStart, name: '_.trimStart'},
-    {func: _.truncate, name: '_.truncate'},
+    {func: _.truncate, name: '_.truncate'}, //TODO complex object predicate
     {func: _.unescape, name: '_.unescape'},
     {func: _.upperCase, name: '_.upperCase'},
     {func: _.upperFirst, name: '_.upperFirst'},
-    {func: _.words, name: '_.words'},
+    {func: _.words, name: '_.words'}, //TODO regex predicate generation
   ],
   util: [
     {func: _.attempt, name: '_.attempt'},

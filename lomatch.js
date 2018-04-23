@@ -4,10 +4,9 @@ const generate = require('./tools/generation.js');
 const test = require('./tools/test.js');
 const sort = require('./tools/sorting.js')
 
-function matchArray(input, output, predicates) {
-  predicates = _.uniqWith(_.concat(predicates, generate.generateArrayPredicates(input, output)), _.isEqual);
+function match(input, output, predicates, funcs) {
   var matches = [];
-  _.forEach(functions.funcs.array, func => {
+  _.forEach(funcs, func => {
     if (test.testWithoutPredicate(input, output, func.func)) {
       return matches.push({func: func.name});
     }
@@ -29,10 +28,20 @@ function matchArray(input, output, predicates) {
 }
 
 function LoMatch(input, output, predicates) {
+  var funcs;
   if (Array.isArray(input)) {
-    return matchArray(input, output, predicates);
+    predicates = _.concat(predicates, generate.generateArrayPredicates(input, output));
+    funcs = functions.funcs.array;
   }
-  console.log(`Invalid input type or format ${typeof input}`);
+  else if (_.isString(input)) {
+    predicates = _.concat(predicates, generate.generateStringPredicates(input, output));
+    funcs = functions.funcs.string;
+  }
+
+  if (!funcs)
+    console.log(`Invalid input type or format ${typeof input}`);
+
+  return match(input, output, predicates, funcs);
 }
 
 module.exports = {

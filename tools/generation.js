@@ -28,6 +28,17 @@ function generateArrayPredicates(input, output) {
   return predicates;
 }
 
+function generateStringPredicates(input, output) {
+  var predicates = [output, input];
+  predicates.push(output.length);
+  var i = input.length;
+  while (i--) {
+    predicates.push(input.charAt(i));
+  }
+  return _.uniq(predicates);
+}
+
 module.exports = {
   generateArrayPredicates: generateArrayPredicates,
+  generateStringPredicates: generateStringPredicates,
 }
