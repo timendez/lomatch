@@ -13,7 +13,6 @@ describe('Objects', () => {
   describe('_.at', () => {
     it('with a complex deep object', () => {
       var matches = lomatch.LoMatch({ 'a': [{ 'b': { 'c': 3 } }, 4] }, [3, 4], []);
-      console.log(matches);
       var expectedMatch = {func: '_.at', predicates: ['a[0].b.c', 'a[1]']};
       expect(matches).to.deep.include(expectedMatch);
     });
