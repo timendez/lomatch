@@ -170,7 +170,7 @@ functions = {
     {func: _.isUndefined, name: '_.isUndefined'},
     {func: _.isWeakMap, name: '_.isWeakMap'},
     {func: _.isWeakSet, name: '_.isWeakSet'},
-    {func: _.lt, name: '_.lt'},
+    {func: _.lt, name: '_.lt'}, //TODO decide if we want to support
     {func: _.lte, name: '_.lte'},
     {func: _.toArray, name: '_.toArray'},
     {func: _.toFinite, name: '_.toFinite'},
@@ -204,47 +204,47 @@ functions = {
     {func: _.random, name: '_.random'},
   ],
   object: [
-    {func: _.assign, name: '_.assign'},
-    {func: _.assignIn, name: '_.assignIn'},
-    {func: _.assignInWith, name: '_.assignInWith'},
-    {func: _.assignWith, name: '_.assignWith'},
+    {func: _.assign, name: '_.assign'}, //TODO multiple functions
+    {func: _.assignIn, name: '_.assignIn'}, //TODO should I even support this?
+    {func: _.assignInWith, name: '_.assignInWith'}, //TODO
+    {func: _.assignWith, name: '_.assignWith'}, // Should be covered by other things that use _.assignWith to generate their thing
     {func: _.at, name: '_.at'},
-    {func: _.create, name: '_.create'},
-    {func: _.defaults, name: '_.defaults'},
-    {func: _.defaultsDeep, name: '_.defaultsDeep'},
+    {func: _.create, name: '_.create'}, //TODO probably won't support
+    {func: _.defaults, name: '_.defaults'}, //TODO support multiple arguments
+    {func: _.defaultsDeep, name: '_.defaultsDeep'}, //TODO
     {func: _.findKey, name: '_.findKey'},
     {func: _.findLastKey, name: '_.findLastKey'},
-    {func: _.forIn, name: '_.forIn'},
-    {func: _.forInRight, name: '_.forInRight'},
-    {func: _.forOwn, name: '_.forOwn'},
-    {func: _.forOwnRight, name: '_.forOwnRight'},
-    {func: _.functions, name: '_.functions'},
-    {func: _.functionsIn, name: '_.functionsIn'},
+    {func: _.forIn, name: '_.forIn'}, //TODO Probably won't support
+    {func: _.forInRight, name: '_.forInRight'}, //TODO
+    {func: _.forOwn, name: '_.forOwn'}, //TODO
+    {func: _.forOwnRight, name: '_.forOwnRight'}, //TODO
+    {func: _.functions, name: '_.functions'}, //TODO how to support
+    {func: _.functionsIn, name: '_.functionsIn'}, //TODO
     {func: _.get, name: '_.get'},
-    {func: _.has, name: '_.has'},
-    {func: _.hasIn, name: '_.hasIn'},
+    {func: _.has, name: '_.has'}, //TODO worth?
+    {func: _.hasIn, name: '_.hasIn'}, //TODO
     {func: _.invert, name: '_.invert'},
     {func: _.invertBy, name: '_.invertBy'},
-    {func: _.invoke, name: '_.invoke'},
+    {func: _.invoke, name: '_.invoke'}, //TODO Deal with this grossness syntax
     {func: _.keys, name: '_.keys'},
     {func: _.keysIn, name: '_.keysIn'},
-    {func: _.mapKeys, name: '_.mapKeys'},
-    {func: _.mapValues, name: '_.mapValues'},
+    {func: _.mapKeys, name: '_.mapKeys'}, //TODO Support iteratee function arguments
+    {func: _.mapValues, name: '_.mapValues'}, //TODO
     {func: _.merge, name: '_.merge'},
-    {func: _.mergeWith, name: '_.mergeWith'},
+    {func: _.mergeWith, name: '_.mergeWith'}, //TODO deal with multiple arguments
     {func: _.omit, name: '_.omit'},
-    {func: _.omitBy, name: '_.omitBy'},
+    {func: _.omitBy, name: '_.omitBy'}, //TODO identity predicates
     {func: _.pick, name: '_.pick'},
-    {func: _.pickBy, name: '_.pickBy'},
+    {func: _.pickBy, name: '_.pickBy'}, //TODO identity predicates
     {func: _.result, name: '_.result'},
-    {func: _.set, name: '_.set'},
+    {func: _.set, name: '_.set'}, //TODO multiple arguments
     {func: _.setWith, name: '_.setWith'},
     {func: _.toPairs, name: '_.toPairs'},
     {func: _.toPairsIn, name: '_.toPairsIn'},
-    {func: _.transform, name: '_.transform'},
+    {func: _.transform, name: '_.transform'}, //TODO support function preddies?
     {func: _.unset, name: '_.unset'},
-    {func: _.update, name: '_.update'},
-    {func: _.updateWith, name: '_.updateWith'},
+    {func: _.update, name: '_.update'}, //TODO support multiple arguments
+    {func: _.updateWith, name: '_.updateWith'}, //TODO
     {func: _.values, name: '_.values'},
     {func: _.valuesIn, name: '_.valuesIn'},
   ],

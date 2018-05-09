@@ -11,7 +11,7 @@ function sortValidPredicates(validPredicates) {
         weight += Math.max(predicate.toString().length, 2.5);
       }
       else {
-        weight += JSON.stringify(validPredicates).length;
+        weight += JSON.stringify(predicate).length;
       }
     }
     else {

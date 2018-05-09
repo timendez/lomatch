@@ -48,6 +48,10 @@ function LoMatch(input, output, predicates) {
     predicates = _.concat(predicates, generate.generateStringPredicates(input, output));
     funcs = functions.funcs.string;
   }
+  else if (_.isObjectLike(input)) {
+    predicates = _.concat(predicates, generate.generateObjectPredicates(input, output));
+    funcs = functions.funcs.object;
+  }
 
   return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
 }
