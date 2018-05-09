@@ -28,3 +28,16 @@ This will return an output of all the lodash functions and predicate combination
   { func: '_.xorWith', predicates: [ 2 ] } ]
 ```
 This means that you can use something like `_.pull([1, 2, 3, 2, 2], 2)` in order to get `[1, 3]`. Lomatch will return results for both modified arrays and returned arrays. Be sure to read the [lodash documentation](https://lodash.com/docs/4.17.5) for the function you are going to use.
+
+## Objects
+### Example
+I have a starting object of `{ 'a': [{ 'b': { 'c': 3 } }, 4] }`, and I want a final array of `[3, 4]`.
+
+```javascript
+lomatch.LoMatch({ 'a': [{ 'b': { 'c': 3 } }, 4] }, [3, 4], []);
+```
+This will return an output of all the lodash functions and predicate combinations you should use.
+```javascript
+[ { func: '_.at', predicates: [ 'a[0].b.c', 'a[1]' ] } ]
+```
+This means that you can use `_.at({ 'a': [{ 'b': { 'c': 3 } }, 4] }, [ 'a[0].b.c', 'a[1]' ])` in order to get `[3, 4]`. Lomatch will return results for both modified arrays and returned arrays. Be sure to read the [lodash documentation](https://lodash.com/docs/4.17.5) for the function you are going to use.
