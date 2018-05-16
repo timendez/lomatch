@@ -1,12 +1,12 @@
 const _ = require('lodash');
 
-functions = {
+const functions = {
   array: [
     {func: _.chunk, name: '_.chunk'},
     {func: _.compact, name: '_.compact'},
     {func: _.concat, name: '_.concat'},
     {func: _.difference, name: '_.difference'},
-    {func: _.differenceBy, name: '_.differenceBy'},
+    {func: _.differenceBy, name: '_.differenceBy', type: 'iteratee'},
     {func: _.differenceWith, name: '_.differenceWith'},
     {func: _.drop, name: '_.drop'},
     {func: _.dropRight, name: '_.dropRight'},
@@ -23,7 +23,7 @@ functions = {
     {func: _.indexOf, name: '_.indexOf'},
     {func: _.initial, name: '_.initial'},
     {func: _.intersection, name: '_.intersection'}, //TODO Support a single array parameter of multiple values
-    {func: _.intersectionBy, name: '_.intersectionBy'}, //TODO
+    {func: _.intersectionBy, name: '_.intersectionBy', type: 'iteratee'}, //TODO
     {func: _.intersectionWith, name: '_.intersectionWith'}, //TODO
     {func: _.join, name: '_.join'},
     {func: _.last, name: '_.last'},
@@ -31,62 +31,62 @@ functions = {
     {func: _.nth, name: '_.nth'},
     {func: _.pull, name: '_.pull', mutates: true},
     {func: _.pullAll, name: '_.pullAll', mutates: true},
-    {func: _.pullAllBy, name: '_.pullAllBy', mutates: true}, //TODO Support iteratee functions
+    {func: _.pullAllBy, name: '_.pullAllBy', mutates: true, type: 'iteratee'}, //TODO Support iteratee functions, multiple arguments
     {func: _.pullAllWith, name: '_.pullAllWith', mutates: true}, //TODO Support comparator functions
     {func: _.pullAt, name: '_.pullAt', mutates: true},
     {func: _.remove, name: '_.remove', mutates: true}, //TODO Support function predicates
     {func: _.reverse, name: '_.reverse', mutates: true},
     {func: _.slice, name: '_.slice'}, // TODO Support multiple argument functions
     {func: _.sortedIndex, name: '_.sortedIndex'},
-    {func: _.sortedIndexBy, name: '_.sortedIndexBy'}, //TODO Support multiple argument functions, function predicates
+    {func: _.sortedIndexBy, name: '_.sortedIndexBy', type: 'iteratee'}, //TODO Support multiple argument functions, function predicates
     {func: _.sortedIndexOf, name: '_.sortedIndexOf'},
     {func: _.sortedLastIndex, name: '_.sortedLastIndex'},
-    {func: _.sortedLastIndexBy, name: '_.sortedLastIndexBy'}, //TODO Support multiple argument functions, function predicates
+    {func: _.sortedLastIndexBy, name: '_.sortedLastIndexBy', type: 'iteratee'}, //TODO Support multiple argument functions, function predicates
     {func: _.sortedLastIndexOf, name: '_.sortedLastIndexOf'},
     {func: _.sortedUniq, name: '_.sortedUniq'},
-    {func: _.sortedUniqBy, name: '_.sortedUniqBy'}, //TODO Suport iteratee functions
+    {func: _.sortedUniqBy, name: '_.sortedUniqBy', type: 'iteratee'},
     {func: _.tail, name: '_.tail'},
     {func: _.take, name: '_.take'},
     {func: _.takeRight, name: '_.takeRight'},
     {func: _.takeRightWhile, name: '_.takeRightWhile'}, //TODO Support identity functions
     {func: _.takeWhile, name: '_.takeWhile'}, //TODO Support identity functions
     {func: _.union, name: '_.union'}, //TODO Support a single array parameter of multiple values
-    {func: _.unionBy, name: '_.unionBy'}, //TODO
+    {func: _.unionBy, name: '_.unionBy', type: 'iteratee'}, //TODO
     {func: _.unionWith, name: '_.unionWith'}, //TODO
     {func: _.uniq, name: '_.uniq'},
-    {func: _.uniqBy, name: '_.uniqBy'},
+    {func: _.uniqBy, name: '_.uniqBy', type: 'iteratee'},
     {func: _.uniqWith, name: '_.uniqWith'}, //TODO Support comparators
     {func: _.unzip, name: '_.unzip'},
-    {func: _.unzipWith, name: '_.unzipWith'}, //TODO Support identity arguments
+    {func: _.unzipWith, name: '_.unzipWith', type: 'iteratee'},
     {func: _.without, name: '_.without'}, //TODO Support multiple arguments
     {func: _.xor, name: '_.xor'},
-    {func: _.xorBy, name: '_.xorBy'}, //TODO Support multiple arrays and a comparator
+    {func: _.xorBy, name: '_.xorBy', type: 'iteratee'}, //TODO Support multiple arrays and a comparator
     {func: _.xorWith, name: '_.xorWith'}, //TODO
     {func: _.zip, name: '_.zip'}, //TODO Support multiple arrays
     {func: _.zipObject, name: '_.zipObject'}, //TODO Support complex predicate generation
     {func: _.zipObjectDeep, name: '_.zipObjectDeep'}, //TODO
-    {func: _.zipWith, name: '_.zipWith'}, //TODO Support multiple arguments, identity iteratees
+    {func: _.zipWith, name: '_.zipWith', type: 'iteratee'}, //TODO Support multiple arguments, identity iteratees
   ],
   collection: [
-    {func: _.countBy, name: '_.countBy'},
+    {func: _.countBy, name: '_.countBy', type: 'iteratee'},
     {func: _.every, name: '_.every'},
     {func: _.filter, name: '_.filter'},
     {func: _.find, name: '_.find'},
     {func: _.findLast, name: '_.findLast'},
-    {func: _.flatMap, name: '_.flatMap'},
-    {func: _.flatMapDeep, name: '_.flatMapDeep'},
-    {func: _.flatMapDepth, name: '_.flatMapDepth'},
-    {func: _.forEach, name: '_.forEach'},
-    {func: _.forEachRight, name: '_.forEachRight'},
-    {func: _.groupBy, name: '_.groupBy'},
+    {func: _.flatMap, name: '_.flatMap', type: 'iteratee'},
+    {func: _.flatMapDeep, name: '_.flatMapDeep', type: 'iteratee'},
+    {func: _.flatMapDepth, name: '_.flatMapDepth', type: 'iteratee'},
+    {func: _.forEach, name: '_.forEach', type: 'iteratee'},
+    {func: _.forEachRight, name: '_.forEachRight', type: 'iteratee'},
+    {func: _.groupBy, name: '_.groupBy', type: 'iteratee'},
     {func: _.includes, name: '_.includes'},
     {func: _.invokeMap, name: '_.invokeMap'},
-    {func: _.keyBy, name: '_.keyBy'},
-    {func: _.map, name: '_.map'},
+    {func: _.keyBy, name: '_.keyBy', type: 'iteratee'},
+    {func: _.map, name: '_.map', type: 'iteratee'},
     {func: _.orderBy, name: '_.orderBy'},
     {func: _.partition, name: '_.partition'},
-    {func: _.reduce, name: '_.reduce'},
-    {func: _.reduceRight, name: '_.reduceRight'},
+    {func: _.reduce, name: '_.reduce', type: 'iteratee'},
+    {func: _.reduceRight, name: '_.reduceRight', type: 'iteratee'},
     {func: _.reject, name: '_.reject'},
     {func: _.sample, name: '_.sample'},
     {func: _.sampleSize, name: '_.sampleSize'},
@@ -187,16 +187,16 @@ functions = {
     {func: _.divide, name: '_.divide'},
     {func: _.floor, name: '_.floor'},
     {func: _.max, name: '_.max'},
-    {func: _.maxBy, name: '_.maxBy'},
+    {func: _.maxBy, name: '_.maxBy', type: 'iteratee'},
     {func: _.mean, name: '_.mean'},
-    {func: _.meanBy, name: '_.meanBy'},
+    {func: _.meanBy, name: '_.meanBy', type: 'iteratee'},
     {func: _.min, name: '_.min'},
-    {func: _.minBy, name: '_.minBy'},
+    {func: _.minBy, name: '_.minBy', type: 'iteratee'},
     {func: _.multiply, name: '_.multiply'},
     {func: _.round, name: '_.round'},
     {func: _.subtract, name: '_.subtract'},
     {func: _.sum, name: '_.sum'},
-    {func: _.sumBy, name: '_.sumBy'},
+    {func: _.sumBy, name: '_.sumBy', type: 'iteratee'},
   ],
   number: [
     {func: _.clamp, name: '_.clamp'},
@@ -214,22 +214,22 @@ functions = {
     {func: _.defaultsDeep, name: '_.defaultsDeep'}, //TODO
     {func: _.findKey, name: '_.findKey'},
     {func: _.findLastKey, name: '_.findLastKey'},
-    {func: _.forIn, name: '_.forIn'}, //TODO Probably won't support
-    {func: _.forInRight, name: '_.forInRight'}, //TODO
-    {func: _.forOwn, name: '_.forOwn'}, //TODO
-    {func: _.forOwnRight, name: '_.forOwnRight'}, //TODO
+    {func: _.forIn, name: '_.forIn', type: 'iteratee'}, //TODO Probably won't support
+    {func: _.forInRight, name: '_.forInRight', type: 'iteratee'}, //TODO
+    {func: _.forOwn, name: '_.forOwn', type: 'iteratee'}, //TODO
+    {func: _.forOwnRight, name: '_.forOwnRight', type: 'iteratee'}, //TODO
     {func: _.functions, name: '_.functions'}, //TODO how to support
     {func: _.functionsIn, name: '_.functionsIn'}, //TODO
     {func: _.get, name: '_.get'},
     {func: _.has, name: '_.has'}, //TODO worth?
     {func: _.hasIn, name: '_.hasIn'}, //TODO
     {func: _.invert, name: '_.invert'},
-    {func: _.invertBy, name: '_.invertBy'},
+    {func: _.invertBy, name: '_.invertBy', type: 'iteratee'},
     {func: _.invoke, name: '_.invoke'}, //TODO Deal with this grossness syntax
     {func: _.keys, name: '_.keys'},
     {func: _.keysIn, name: '_.keysIn'},
-    {func: _.mapKeys, name: '_.mapKeys'}, //TODO Support iteratee function arguments
-    {func: _.mapValues, name: '_.mapValues'}, //TODO
+    {func: _.mapKeys, name: '_.mapKeys', type: 'iteratee'}, //TODO Support iteratee function arguments
+    {func: _.mapValues, name: '_.mapValues', type: 'iteratee'}, //TODO
     {func: _.merge, name: '_.merge'},
     {func: _.mergeWith, name: '_.mergeWith'}, //TODO deal with multiple arguments
     {func: _.omit, name: '_.omit'},
@@ -241,7 +241,7 @@ functions = {
     {func: _.setWith, name: '_.setWith'},
     {func: _.toPairs, name: '_.toPairs'},
     {func: _.toPairsIn, name: '_.toPairsIn'},
-    {func: _.transform, name: '_.transform'}, //TODO support function preddies?
+    {func: _.transform, name: '_.transform', type: 'iteratee'}, //TODO support function preddies?
     {func: _.unset, name: '_.unset'},
     {func: _.update, name: '_.update'}, //TODO support multiple arguments
     {func: _.updateWith, name: '_.updateWith'}, //TODO
@@ -312,7 +312,7 @@ functions = {
     {func: _.stubObject, name: '_.stubObject'},
     {func: _.stubString, name: '_.stubString'},
     {func: _.stubTrue, name: '_.stubTrue'},
-    {func: _.times, name: '_.times'},
+    {func: _.times, name: '_.times', type: 'iteratee'},
     {func: _.toPath, name: '_.toPath'},
     {func: _.uniqueId, name: '_.uniqueId'},
   ],
@@ -347,7 +347,74 @@ var guardedMethods = [
   _.words,
 ]
 
+const iteratees = [
+  {func: _.add, name: '_.add'},
+  {func: _.ceil, name: '_.ceil'},
+  {func: _.divide, name: '_.divide'},
+  {func: _.floor, name: '_.floor'},
+  {func: _.max, name: '_.max'},
+  {func: _.mean, name: '_.mean'},
+  {func: _.min, name: '_.min'},
+  {func: _.multiply, name: '_.multiply'},
+  {func: _.round, name: '_.round'},
+  {func: _.subtract, name: '_.subtract'},
+  {func: _.sum, name: '_.sum'},
+  {func: _.castArray, name: '_.castArray'},
+  {func: _.conformsTo, name: '_.conformsTo'},
+  {func: _.eq, name: '_.eq'},
+  {func: _.gt, name: '_.gt'},
+  {func: _.gte, name: '_.gte'},
+  {func: _.isArguments, name: '_.isArguments'},
+  {func: _.isArray, name: '_.isArray'},
+  {func: _.isArrayBuffer, name: '_.isArrayBuffer'},
+  {func: _.isArrayLike, name: '_.isArrayLike'},
+  {func: _.isArrayLikeObject, name: '_.isArrayLikeObject'},
+  {func: _.isBoolean, name: '_.isBoolean'},
+  {func: _.isBuffer, name: '_.isBuffer'},
+  {func: _.isDate, name: '_.isDate'},
+  {func: _.isElement, name: '_.isElement'},
+  {func: _.isEmpty, name: '_.isEmpty'},
+  {func: _.isEqual, name: '_.isEqual'},
+  {func: _.isEqualWith, name: '_.isEqualWith'},
+  {func: _.isError, name: '_.isError'},
+  {func: _.isFinite, name: '_.isFinite'},
+  {func: _.isFunction, name: '_.isFunction'},
+  {func: _.isInteger, name: '_.isInteger'},
+  {func: _.isLength, name: '_.isLength'},
+  {func: _.isMap, name: '_.isMap'},
+  {func: _.isMatch, name: '_.isMatch'},
+  {func: _.isMatchWith, name: '_.isMatchWith'},
+  {func: _.isNaN, name: '_.isNaN'},
+  {func: _.isNative, name: '_.isNative'},
+  {func: _.isNil, name: '_.isNil'},
+  {func: _.isNull, name: '_.isNull'},
+  {func: _.isNumber, name: '_.isNumber'},
+  {func: _.isObject, name: '_.isObject'},
+  {func: _.isObjectLike, name: '_.isObjectLike'},
+  {func: _.isPlainObject, name: '_.isPlainObject'},
+  {func: _.isRegExp, name: '_.isRegExp'},
+  {func: _.isSafeInteger, name: '_.isSafeInteger'},
+  {func: _.isSet, name: '_.isSet'},
+  {func: _.isString, name: '_.isString'},
+  {func: _.isSymbol, name: '_.isSymbol'},
+  {func: _.isTypedArray, name: '_.isTypedArray'},
+  {func: _.isUndefined, name: '_.isUndefined'},
+  {func: _.isWeakMap, name: '_.isWeakMap'},
+  {func: _.isWeakSet, name: '_.isWeakSet'},
+  {func: _.lt, name: '_.lt'},
+  {func: _.lte, name: '_.lte'},
+  {func: _.toArray, name: '_.toArray'},
+  {func: _.toFinite, name: '_.toFinite'},
+  {func: _.toInteger, name: '_.toInteger'},
+  {func: _.toLength, name: '_.toLength'},
+  {func: _.toNumber, name: '_.toNumber'},
+  {func: _.toPlainObject, name: '_.toPlainObject'},
+  {func: _.toSafeInteger, name: '_.toSafeInteger'},
+  {func: _.toString, name: '_.toString'},
+]
+
 module.exports = {
   funcs: functions,
-  guardedMethods: guardedMethods
+  guardedMethods: guardedMethods,
+  iteratees: iteratees,
 }

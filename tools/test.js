@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const iteratees = require('../data/functions.js').iteratees;
 
 function testWithoutPredicate(input, output, func) {
   var clone = _.cloneDeep(input);
@@ -21,7 +22,19 @@ function testWithPredicate(input, output, predicate, func) {
   return 'failure';
 }
 
+function testWithIteratees(input, output, func) {
+  var successIteratees = [];
+  _.forEach(iteratees, iteratee => {
+    var clone = _.cloneDeep(input);
+    if (_.isEqual(output, func.func(clone, iteratee.func)) || (_.isEqual(output, clone) && !_.isEqual(input, clone))) {
+      successIteratees.push(iteratee.name);
+    }
+  });
+  return successIteratees;
+}
+
 module.exports = {
   testWithoutPredicate: testWithoutPredicate,
   testWithPredicate: testWithPredicate,
+  testWithIteratees: testWithIteratees,
 }
