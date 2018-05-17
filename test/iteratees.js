@@ -43,5 +43,41 @@ describe('Iteratees as predicates', () => {
         expect(targetMatch.iteratees).to.include(expectedMatch);
       });
     });
+    describe('_.mapKeys', () => {
+      it('with sum', () => {
+        var matches = lomatch.LoMatch({ 1: 2, 3: 4 }, { 0: 4 }, []);
+        var expectedMatch = '_.sum';
+        var targetMatch = _.find(matches, ['func', '_.mapKeys']);
+        expect(targetMatch).to.have.a.property('iteratees');
+        expect(targetMatch.iteratees).to.include(expectedMatch);
+      });
+    });
+    describe('_.mapValues', () => {
+      it('with add', () => {
+        var matches = lomatch.LoMatch({ key: ' value' }, { key: ' valuekey' }, []);
+        var expectedMatch = '_.add';
+        var targetMatch = _.find(matches, ['func', '_.mapValues']);
+        expect(targetMatch).to.have.a.property('iteratees');
+        expect(targetMatch.iteratees).to.include(expectedMatch);
+      });
+    });
+    describe('_.omitBy', () => {
+      it('with isNumber', () => {
+        var matches = lomatch.LoMatch({ str: 'hello', num1: 3, num2: 5 }, { str: 'hello' }, []);
+        var expectedMatch = '_.isNumber';
+        var targetMatch = _.find(matches, ['func', '_.omitBy']);
+        expect(targetMatch).to.have.a.property('iteratees');
+        expect(targetMatch.iteratees).to.include(expectedMatch);
+      });
+    });
+    describe('_.pickBy', () => {
+      it('with isNumber', () => {
+        var matches = lomatch.LoMatch({ str: 'hello', num1: 3, num2: 5 }, { num1: 3, num2: 5 }, []);
+        var expectedMatch = '_.isNumber';
+        var targetMatch = _.find(matches, ['func', '_.pickBy']);
+        expect(targetMatch).to.have.a.property('iteratees');
+        expect(targetMatch.iteratees).to.include(expectedMatch);
+      });
+    });
   });
 });

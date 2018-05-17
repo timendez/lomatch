@@ -233,9 +233,9 @@ const functions = {
     {func: _.merge, name: '_.merge'},
     {func: _.mergeWith, name: '_.mergeWith'}, //TODO deal with multiple arguments
     {func: _.omit, name: '_.omit'},
-    {func: _.omitBy, name: '_.omitBy'}, //TODO identity predicates
+    {func: _.omitBy, name: '_.omitBy', type: 'iteratee'},
     {func: _.pick, name: '_.pick'},
-    {func: _.pickBy, name: '_.pickBy'}, //TODO identity predicates
+    {func: _.pickBy, name: '_.pickBy', type: 'iteratee'},
     {func: _.result, name: '_.result'},
     {func: _.set, name: '_.set'}, //TODO multiple arguments
     {func: _.setWith, name: '_.setWith'},

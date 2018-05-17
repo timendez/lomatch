@@ -60,7 +60,6 @@ function LoMatch(input, output, predicates) {
     predicates = _.concat(predicates, generate.generateObjectPredicates(input, output));
     funcs = functions.funcs.object;
   }
-
   return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
 }
 
