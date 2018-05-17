@@ -93,7 +93,7 @@ const functions = {
     {func: _.shuffle, name: '_.shuffle'},
     {func: _.size, name: '_.size'},
     {func: _.some, name: '_.some'},
-    {func: _.sortBy, name: '_.sortBy'},
+    {func: _.sortBy, name: '_.sortBy', type: 'iteratee'},
   ],
   date: [
     {func: _.now, name: '_.now'},
