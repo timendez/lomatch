@@ -360,7 +360,6 @@ const iteratees = [
   {func: _.subtract, name: '_.subtract'},
   {func: _.sum, name: '_.sum'},
   {func: _.castArray, name: '_.castArray'},
-  {func: _.conformsTo, name: '_.conformsTo'},
   {func: _.eq, name: '_.eq'},
   {func: _.gt, name: '_.gt'},
   {func: _.gte, name: '_.gte'},
