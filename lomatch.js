@@ -23,6 +23,14 @@ function match(input, output, predicates, funcs) {
     if (!_.isEmpty(validPredicates)) {
       matches.push({func: func.name, predicates: _.head(sort.sortValidPredicates(_.uniqWith(validPredicates, _.isEqual)))});
     }
+
+    // Take all the iteratee preddies and return them, let the user decide which preddies to use in their thing
+    if (func.inputType === 'iteratee') {
+      var iteratees = test.testWithIteratees(input, output, func);
+      if (!_.isEmpty(iteratees)) {
+        matches.push({func: func.name, iteratees: iteratees});
+      }
+    }
   });
   return matches;
 }
@@ -52,7 +60,6 @@ function LoMatch(input, output, predicates) {
     predicates = _.concat(predicates, generate.generateObjectPredicates(input, output));
     funcs = functions.funcs.object;
   }
-
   return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
 }
 
