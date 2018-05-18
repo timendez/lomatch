@@ -1,3 +1,4 @@
+# This script is used to format lodash functions copied from the lodash site in the format that we use in `data/functions.js`
 _ = require 'lodash'
 
 arrOfStrings = [
