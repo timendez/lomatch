@@ -40,4 +40,18 @@ This will return an output of all the lodash functions and predicate combination
 ```javascript
 [ { func: '_.at', predicates: [ 'a[0].b.c', 'a[1]' ] } ]
 ```
-This means that you can use `_.at({ 'a': [{ 'b': { 'c': 3 } }, 4] }, [ 'a[0].b.c', 'a[1]' ])` in order to get `[3, 4]`. Lomatch will return results for both modified arrays and returned arrays. Be sure to read the [lodash documentation](https://lodash.com/docs/4.17.5) for the function you are going to use.
+This means that you can use `_.at({ 'a': [{ 'b': { 'c': 3 } }, 4] }, [ 'a[0].b.c', 'a[1]' ])` in order to get `[3, 4]`. Lomatch will return results for both modified objects and returned objects. Be sure to read the [lodash documentation](https://lodash.com/docs/4.17.5) for the function you are going to use.
+
+## Strings
+While strings are supported by LoMatch, there will only in rare cases be more than one solution.
+### Example
+I have a starting string of `'fred, barney, & pebbles'`, and I want a final array of `['fred', 'barney', 'pebbles']`.
+
+```javascript
+lomatch.LoMatch('fred, barney, & pebbles', ['fred', 'barney', 'pebbles'], []);
+```
+This will return an output of all the lodash functions and predicate combinations you should use.
+```javascript
+[ { func: '_.words', predicates: [] } ]
+```
+This means that you can use `_.words('fred, barney, & pebbles')` in order to get `['fred', 'barney', 'pebbles']`. Keep in mind strings are primitives and thus cannot be mutated in JavaScript. Be sure to read the [lodash documentation](https://lodash.com/docs/4.17.5) for the function you are going to use.
