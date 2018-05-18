@@ -25,7 +25,7 @@ function match(input, output, predicates, funcs) {
     }
 
     // Take all the iteratee preddies and return them, let the user decide which preddies to use in their thing
-    if (func.type === 'iteratee') {
+    if (func.inputType === 'iteratee') {
       var iteratees = test.testWithIteratees(input, output, func);
       if (!_.isEmpty(iteratees)) {
         matches.push({func: func.name, iteratees: iteratees});
