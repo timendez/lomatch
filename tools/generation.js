@@ -29,13 +29,12 @@ function generateArrayPredicates(input, output) {
 }
 
 function generateStringPredicates(input, output) {
-  var predicates = [output, input];
-  predicates.push(output.length);
+  var predicates = [output, input, output.length, input.length, _.words(input), _.words(output)];
   var i = input.length;
   while (i--) {
     predicates.push(input.charAt(i));
   }
-  return _.uniq(predicates);
+  return _.uniq(_.flatten(predicates));
 }
 
 function generateObjectPaths(input, output, path, successPaths, allPaths) {

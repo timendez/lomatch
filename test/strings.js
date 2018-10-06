@@ -120,6 +120,13 @@ describe('Strings', () => {
       expect(matches).to.deep.include(expectedMatch);
     });
   });
+  describe('_.replace', () => {
+    it('with a normal string', () => {
+      var matches = lomatch.LoMatch('Hi Fred', 'Hi Barney', []);
+      var expectedMatch = {func: '_.replace', predicates: ['Fred', 'Barney']};
+      expect(matches).to.deep.include(expectedMatch);
+    });
+  });
   describe('_.snakeCase', () => {
     it('with a normal string', () => {
       var matches = lomatch.LoMatch('Foo Bar', 'foo_bar', []);

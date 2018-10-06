@@ -6,10 +6,12 @@ const sort = require('./tools/sorting.js')
 
 function match(input, output, predicates, funcs) {
   var matches = [];
+  var outerLoopCount = 0;
   _.forEach(funcs, func => {
     if (test.testWithoutPredicate(input, output, func.func)) {
       return matches.push({func: func.name});
     }
+
     var validPredicates = [];
     _.forEach(predicates, predicate => {
       try {
@@ -17,9 +19,20 @@ function match(input, output, predicates, funcs) {
         if (passingPredicates != 'failure') {
           validPredicates.push(passingPredicates);
         }
+
+        // Multiple argument functions
+        if ((func.argCount > 2 || func.argCount === 'infinite') && predicates.length < 1000) {
+          _.forEach(predicates, secondaryPredicate => {
+            var passingMultipleArguments = test.testWithMultipleArguments(input, output, predicate, secondaryPredicate, func.func);
+            if (passingMultipleArguments != 'failure') {
+              validPredicates.push(passingMultipleArguments);
+            }
+          });
+        }
       }
       catch(err){}
     });
+
     if (!_.isEmpty(validPredicates)) {
       matches.push({func: func.name, predicates: _.head(sort.sortValidPredicates(_.uniqWith(validPredicates, _.isEqual)))});
     }
@@ -62,6 +75,9 @@ function LoMatch(input, output, predicates) {
   }
   return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
 }
+
+// console.log(LoMatch([{foo: 1, bar: 2}, {foo: 3, bar: 4}], { foo: 4, bar: 6 }, [_.add]));
+// console.log('result = \n' + JSON.stringify(LoMatch(['a', 'b', 'c', 'd'], [['a', 'b'], ['c', 'd']], [])));
 
 module.exports = {
   LoMatch,

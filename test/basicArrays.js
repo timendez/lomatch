@@ -40,13 +40,13 @@ describe('Arrays', () => {
     describe('_.chunk', () => {
       it('with a predicate of 2', () => {
         var matches = lomatch.LoMatch(['a', 'b', 'c', 'd'], [['a', 'b'], ['c', 'd']], []);
-        var expectedMatches = [{func: '_.chunk', predicates: 2}];
-        expect(matches).to.eql(expectedMatches);
+        var expectedMatches = {func: '_.chunk', predicates: 2};
+        expect(matches).to.deep.include(expectedMatches);
       });
       it('with a predicate of 3', () => {
         var matches = lomatch.LoMatch(['a', 'b', 'c', 'd'], [['a', 'b', 'c'], ['d']], []);
-        var expectedMatches = [{func: '_.chunk', predicates: 3}];
-        expect(matches).to.eql(expectedMatches);
+        var expectedMatches = {func: '_.chunk', predicates: 3};
+        expect(matches).to.deep.include(expectedMatches);
       });
     });
     describe('_.compact', () => {
