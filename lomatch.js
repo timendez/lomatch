@@ -76,9 +76,6 @@ function LoMatch(input, output, predicates) {
   return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
 }
 
-// console.log(LoMatch([{foo: 1, bar: 2}, {foo: 3, bar: 4}], { foo: 4, bar: 6 }, [_.add]));
-// console.log('result = \n' + JSON.stringify(LoMatch(['a', 'b', 'c', 'd'], [['a', 'b'], ['c', 'd']], [])));
-
 module.exports = {
   LoMatch,
 }
