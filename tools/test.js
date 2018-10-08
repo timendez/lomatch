@@ -33,8 +33,17 @@ function testWithIteratees(input, output, func) {
   return successIteratees;
 }
 
+function testWithMultipleArguments(input, output, predicate1, predicate2, func) {
+  var clone1 = _.cloneDeep(input);
+  if (_.isEqual(output, func(clone1, predicate1, predicate2)) || (_.isEqual(output, clone1) && !_.isEqual(input, clone1))) {
+    return [predicate1, predicate2];
+  }
+  return 'failure';
+}
+
 module.exports = {
   testWithoutPredicate: testWithoutPredicate,
   testWithPredicate: testWithPredicate,
   testWithIteratees: testWithIteratees,
+  testWithMultipleArguments: testWithMultipleArguments,
 }

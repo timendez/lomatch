@@ -24,26 +24,26 @@ const functions = {
     {func: _.head, name: '_.head'},
     {func: _.indexOf, name: '_.indexOf'},
     {func: _.initial, name: '_.initial'},
-    {func: _.intersection, name: '_.intersection'}, //TODO Support a single array parameter of multiple values
-    {func: _.intersectionBy, name: '_.intersectionBy', inputType: ITERATEE}, //TODO
-    {func: _.intersectionWith, name: '_.intersectionWith'}, //TODO
+    {func: _.intersection, name: '_.intersection', argCount: 'infinite'}, //TODO Support a single array parameter of multiple values
+    {func: _.intersectionBy, name: '_.intersectionBy', inputType: ITERATEE, argCount: 'infinite'}, //TODO
+    {func: _.intersectionWith, name: '_.intersectionWith', argCount: 3}, //TODO
     {func: _.join, name: '_.join'},
     {func: _.last, name: '_.last'},
     {func: _.lastIndexOf, name: '_.lastIndexOf'},
     {func: _.nth, name: '_.nth'},
     {func: _.pull, name: '_.pull'},
     {func: _.pullAll, name: '_.pullAll'},
-    {func: _.pullAllBy, name: '_.pullAllBy', inputType: ITERATEE}, //TODO Support iteratee functions, multiple arguments
+    {func: _.pullAllBy, name: '_.pullAllBy', inputType: ITERATEE, argCount: 3}, //TODO Support iteratee functions, multiple arguments
     {func: _.pullAllWith, name: '_.pullAllWith'}, //TODO Support comparator functions
     {func: _.pullAt, name: '_.pullAt'},
     {func: _.remove, name: '_.remove'}, //TODO Support function predicates
     {func: _.reverse, name: '_.reverse'},
-    {func: _.slice, name: '_.slice'}, // TODO Support multiple argument functions
+    {func: _.slice, name: '_.slice', argCount: 3}, // TODO Support multiple argument functions
     {func: _.sortedIndex, name: '_.sortedIndex'},
-    {func: _.sortedIndexBy, name: '_.sortedIndexBy', inputType: ITERATEE}, //TODO Support multiple argument functions, function predicates
+    {func: _.sortedIndexBy, name: '_.sortedIndexBy', inputType: ITERATEE, argCount: 3}, //TODO Support multiple argument functions, function predicates
     {func: _.sortedIndexOf, name: '_.sortedIndexOf'},
     {func: _.sortedLastIndex, name: '_.sortedLastIndex'},
-    {func: _.sortedLastIndexBy, name: '_.sortedLastIndexBy', inputType: ITERATEE}, //TODO Support multiple argument functions, function predicates
+    {func: _.sortedLastIndexBy, name: '_.sortedLastIndexBy', inputType: ITERATEE, argCount: 3}, //TODO Support multiple argument functions, function predicates
     {func: _.sortedLastIndexOf, name: '_.sortedLastIndexOf'},
     {func: _.sortedUniq, name: '_.sortedUniq'},
     {func: _.sortedUniqBy, name: '_.sortedUniqBy', inputType: ITERATEE},
@@ -52,22 +52,22 @@ const functions = {
     {func: _.takeRight, name: '_.takeRight'},
     {func: _.takeRightWhile, name: '_.takeRightWhile'}, //TODO Support identity functions
     {func: _.takeWhile, name: '_.takeWhile'}, //TODO Support identity functions
-    {func: _.union, name: '_.union'}, //TODO Support a single array parameter of multiple values
-    {func: _.unionBy, name: '_.unionBy', inputType: ITERATEE}, //TODO
-    {func: _.unionWith, name: '_.unionWith'}, //TODO
+    {func: _.union, name: '_.union', argCount: 'infinite'}, //TODO Support a single array parameter of multiple values
+    {func: _.unionBy, name: '_.unionBy', inputType: ITERATEE, argCount: 'infinite'}, //TODO
+    {func: _.unionWith, name: '_.unionWith', argCount: 3}, //TODO
     {func: _.uniq, name: '_.uniq'},
     {func: _.uniqBy, name: '_.uniqBy', inputType: ITERATEE},
     {func: _.uniqWith, name: '_.uniqWith'}, //TODO Support comparators
     {func: _.unzip, name: '_.unzip'},
     {func: _.unzipWith, name: '_.unzipWith', inputType: ITERATEE},
-    {func: _.without, name: '_.without'}, //TODO Support multiple arguments
+    {func: _.without, name: '_.without', argCount: 'infinite'}, //TODO Support multiple arguments
     {func: _.xor, name: '_.xor'},
-    {func: _.xorBy, name: '_.xorBy', inputType: ITERATEE}, //TODO Support multiple arrays and a comparator
-    {func: _.xorWith, name: '_.xorWith'}, //TODO
-    {func: _.zip, name: '_.zip'}, //TODO Support multiple arrays
+    {func: _.xorBy, name: '_.xorBy', inputType: ITERATEE, argCount: 'infinite'}, //TODO Support multiple arrays and a comparator
+    {func: _.xorWith, name: '_.xorWith', argCount: 3}, //TODO
+    {func: _.zip, name: '_.zip', argCount: 'infinite'}, //TODO Support multiple arrays
     {func: _.zipObject, name: '_.zipObject'}, //TODO Support complex predicate generation
     {func: _.zipObjectDeep, name: '_.zipObjectDeep'}, //TODO
-    {func: _.zipWith, name: '_.zipWith', inputType: ITERATEE}, //TODO Support multiple arguments, identity iteratees
+    {func: _.zipWith, name: '_.zipWith', inputType: ITERATEE, argCount: 'infinite'}, //TODO Support multiple arguments, identity iteratees
   ],
   collection: [
     {func: _.countBy, name: '_.countBy', inputType: ITERATEE},
@@ -206,14 +206,14 @@ const functions = {
     {func: _.random, name: '_.random'},
   ],
   object: [
-    {func: _.assign, name: '_.assign'}, //TODO multiple functions
+    {func: _.assign, name: '_.assign', argCount: 'infinite'}, //TODO multiple functions
     {func: _.assignIn, name: '_.assignIn'}, //TODO should I even support this?
     {func: _.assignInWith, name: '_.assignInWith'}, //TODO
     {func: _.assignWith, name: '_.assignWith'}, // Should be covered by other things that use _.assignWith to generate their thing
     {func: _.at, name: '_.at'},
     {func: _.create, name: '_.create'}, //TODO probably won't support
-    {func: _.defaults, name: '_.defaults'}, //TODO support multiple arguments
-    {func: _.defaultsDeep, name: '_.defaultsDeep'}, //TODO
+    {func: _.defaults, name: '_.defaults', argCount: 'infinite'}, //TODO support multiple arguments
+    {func: _.defaultsDeep, name: '_.defaultsDeep', argCount: 'infinite'}, //TODO
     {func: _.findKey, name: '_.findKey'},
     {func: _.findLastKey, name: '_.findLastKey'},
     {func: _.forIn, name: '_.forIn', inputType: ITERATEE}, //TODO Probably won't support
@@ -233,20 +233,20 @@ const functions = {
     {func: _.mapKeys, name: '_.mapKeys', inputType: ITERATEE}, //TODO Support iteratee function arguments
     {func: _.mapValues, name: '_.mapValues', inputType: ITERATEE}, //TODO
     {func: _.merge, name: '_.merge'},
-    {func: _.mergeWith, name: '_.mergeWith'}, //TODO deal with multiple arguments
+    {func: _.mergeWith, name: '_.mergeWith', argCount: 3}, //TODO deal with multiple arguments
     {func: _.omit, name: '_.omit'},
     {func: _.omitBy, name: '_.omitBy', inputType: ITERATEE},
     {func: _.pick, name: '_.pick'},
     {func: _.pickBy, name: '_.pickBy', inputType: ITERATEE},
     {func: _.result, name: '_.result'},
-    {func: _.set, name: '_.set'}, //TODO multiple arguments
+    {func: _.set, name: '_.set', argCount: 3}, //TODO multiple arguments
     {func: _.setWith, name: '_.setWith'},
     {func: _.toPairs, name: '_.toPairs'},
     {func: _.toPairsIn, name: '_.toPairsIn'},
     {func: _.transform, name: '_.transform', inputType: ITERATEE}, //TODO support function preddies?
     {func: _.unset, name: '_.unset'},
-    {func: _.update, name: '_.update'}, //TODO support multiple arguments
-    {func: _.updateWith, name: '_.updateWith'}, //TODO
+    {func: _.update, name: '_.update', argCount: 3}, //TODO support multiple arguments
+    {func: _.updateWith, name: '_.updateWith', argCount: 4}, //TODO
     {func: _.values, name: '_.values'},
     {func: _.valuesIn, name: '_.valuesIn'},
   ],
@@ -265,15 +265,15 @@ const functions = {
     {func: _.padStart, name: '_.padStart'},
     {func: _.parseInt, name: '_.parseInt'},
     {func: _.repeat, name: '_.repeat'},
-    {func: _.replace, name: '_.replace'}, //TODO multiple arguments
+    {func: _.replace, name: '_.replace', argCount: 3},
     {func: _.snakeCase, name: '_.snakeCase'},
-    {func: _.split, name: '_.split'}, //TODO multiple arguments
+    {func: _.split, name: '_.split', argCount: 3},
     {func: _.startCase, name: '_.startCase'},
     {func: _.startsWith, name: '_.startsWith'},
     {func: _.template, name: '_.template'}, //TODO good luck
     {func: _.toLower, name: '_.toLower'},
     {func: _.toUpper, name: '_.toUpper'},
-    {func: _.trim, name: '_.trim'}, //TODO multiple arguments
+    {func: _.trim, name: '_.trim'},
     {func: _.trimEnd, name: '_.trimEnd'},
     {func: _.trimStart, name: '_.trimStart'},
     {func: _.truncate, name: '_.truncate'}, //TODO complex object predicate

@@ -120,6 +120,13 @@ describe('Strings', () => {
       expect(matches).to.deep.include(expectedMatch);
     });
   });
+  describe('_.replace', () => {
+    it('with a normal string', () => {
+      var matches = lomatch.LoMatch('Hi Fred', 'Hi Barney', []);
+      var expectedMatch = {func: '_.replace', predicates: ['Fred', 'Barney']};
+      expect(matches).to.deep.include(expectedMatch);
+    });
+  });
   describe('_.snakeCase', () => {
     it('with a normal string', () => {
       var matches = lomatch.LoMatch('Foo Bar', 'foo_bar', []);
@@ -129,6 +136,18 @@ describe('Strings', () => {
     it('with a gross string', () => {
       var matches = lomatch.LoMatch('--FOO-BAR--', 'foo_bar', []);
       var expectedMatch = {func: '_.snakeCase'};
+      expect(matches).to.deep.include(expectedMatch);
+    });
+  });
+  describe('_.split', () => {
+    it('with a kebab-case string', () => {
+      var matches = lomatch.LoMatch('a-b-c', ['a', 'b'], []);
+      var expectedMatch = {func: '_.split', predicates: ['-', 2]};
+      expect(matches).to.deep.include(expectedMatch);
+    });
+    it('with a larger string and a trailing double character delimeter', () => {
+      var matches = lomatch.LoMatch('a//b//c//d//e//f//g//h//i//j//k//', ['a', 'b', 'c', 'd', 'e', 'f', 'g'], []);
+      var expectedMatch = {func: '_.split', predicates: ['//', 7]};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
