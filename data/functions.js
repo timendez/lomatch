@@ -265,9 +265,9 @@ const functions = {
     {func: _.padStart, name: '_.padStart'},
     {func: _.parseInt, name: '_.parseInt'},
     {func: _.repeat, name: '_.repeat'},
-    {func: _.replace, name: '_.replace', argCount: 3}, //TODO multiple arguments
+    {func: _.replace, name: '_.replace', argCount: 3},
     {func: _.snakeCase, name: '_.snakeCase'},
-    {func: _.split, name: '_.split', argCount: 3}, //TODO multiple arguments
+    {func: _.split, name: '_.split', argCount: 3},
     {func: _.startCase, name: '_.startCase'},
     {func: _.startsWith, name: '_.startsWith'},
     {func: _.template, name: '_.template'}, //TODO good luck

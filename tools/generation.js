@@ -32,6 +32,10 @@ function generateStringPredicates(input, output) {
   var predicates = [output, input, output.length, input.length, _.words(input), _.words(output)];
   var i = input.length;
   while (i--) {
+    var k = i - 1;
+    while (k-- > 0) {
+      predicates.push(input.substring(k, i));
+    }
     predicates.push(input.charAt(i));
   }
   return _.uniq(_.flatten(predicates));

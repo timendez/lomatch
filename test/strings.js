@@ -139,6 +139,18 @@ describe('Strings', () => {
       expect(matches).to.deep.include(expectedMatch);
     });
   });
+  describe('_.split', () => {
+    it('with a kebab-case string', () => {
+      var matches = lomatch.LoMatch('a-b-c', ['a', 'b'], []);
+      var expectedMatch = {func: '_.split', predicates: ['-', 2]};
+      expect(matches).to.deep.include(expectedMatch);
+    });
+    it('with a larger string and a trailing double character delimeter', () => {
+      var matches = lomatch.LoMatch('a//b//c//d//e//f//g//h//i//j//k//', ['a', 'b', 'c', 'd', 'e', 'f', 'g'], []);
+      var expectedMatch = {func: '_.split', predicates: ['//', 7]};
+      expect(matches).to.deep.include(expectedMatch);
+    });
+  });
   describe('_.startCase', () => {
     it('with a normal string', () => {
       var matches = lomatch.LoMatch('the quick brown fox jumped over the lazy dog', 'The Quick Brown Fox Jumped Over The Lazy Dog', []);
