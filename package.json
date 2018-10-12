@@ -1,6 +1,6 @@
 {
   "name": "lomatch",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A tool that figures out what LoDash function you should use given an input, desired output, and predicate.",
   "main": "lomatch.js",
   "scripts": {
