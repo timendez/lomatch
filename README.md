@@ -1,6 +1,14 @@
 [![CircleCI](https://circleci.com/gh/timendez/lomatch.svg?style=svg&circle-token=49d1bbdea2df1010cd039af572a82adb2f003645)](https://circleci.com/gh/timendez/lomatch)
-# lomatch
-Lomatch is a tool that figures out what LoDash function you should use given an input, desired output, and predicate.
+![LoMatch](./logo.png)
+
+# LoMatch
+LoMatch is a tool that figures out what LoDash function you should use given an input, desired output, and predicate.
+
+## Installation
+### npm
+```
+npm install lomatch
+```
 
 ## Arrays
 ### Example
