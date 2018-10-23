@@ -4,28 +4,28 @@ const generate = require('./tools/generation.js');
 const test = require('./tools/test.js');
 const sort = require('./tools/sorting.js')
 
-function match(input, output, predicates, funcs) {
+function match(input, output, args, funcs) {
   var matches = [];
   var outerLoopCount = 0;
   _.forEach(funcs, func => {
-    if (test.testWithoutPredicate(input, output, func.func)) {
+    if (test.testWithoutArgs(input, output, func.func)) {
       return matches.push({func: func.name});
     }
 
-    var validPredicates = [];
-    _.forEach(predicates, predicate => {
+    var validArgs = [];
+    _.forEach(args, arg => {
       try {
-        var passingPredicates = test.testWithPredicate(input, output, predicate, func.func);
-        if (passingPredicates != 'failure') {
-          validPredicates.push(passingPredicates);
+        var passingArgs = test.testWithArg(input, output, arg, func.func);
+        if (passingArgs != 'failure') {
+          validArgs.push(passingArgs);
         }
 
         // Multiple argument functions
-        if ((func.argCount > 2 || func.argCount === 'infinite') && predicates.length < 1000) {
-          _.forEach(predicates, secondaryPredicate => {
-            var passingMultipleArguments = test.testWithMultipleArguments(input, output, predicate, secondaryPredicate, func.func);
+        if ((func.argCount > 2 || func.argCount === 'infinite') && args.length < 1000) {
+          _.forEach(args, secondaryArg => {
+            var passingMultipleArguments = test.testWithMultipleArguments(input, output, arg, secondaryArg, func.func);
             if (passingMultipleArguments != 'failure') {
-              validPredicates.push(passingMultipleArguments);
+              validArgs.push(passingMultipleArguments);
             }
           });
         }
@@ -33,11 +33,11 @@ function match(input, output, predicates, funcs) {
       catch(err){}
     });
 
-    if (!_.isEmpty(validPredicates)) {
-      matches.push({func: func.name, predicates: _.head(sort.sortValidPredicates(_.uniqWith(validPredicates, _.isEqual)))});
+    if (!_.isEmpty(validArgs)) {
+      matches.push({func: func.name, args: _.head(sort.sortValidArgs(_.uniqWith(validArgs, _.isEqual)))});
     }
 
-    // Take all the iteratee preddies and return them, let the user decide which preddies to use in their thing
+    // Take all the iteratees and return them, let the user decide which iteratee to use in their thing
     if (func.inputType === 'iteratee') {
       var iteratees = test.testWithIteratees(input, output, func);
       if (!_.isEmpty(iteratees)) {
@@ -51,29 +51,30 @@ function match(input, output, predicates, funcs) {
 function matchLang(input, output) {
   var matches = [];
   _.forEach(functions.funcs.lang, func => {
-    if (test.testWithoutPredicate(input, output, func.func)) {
+    if (test.testWithoutArgs(input, output, func.func)) {
       return matches.push({func: func.name});
     }
   });
   return matches;
 }
 
-function LoMatch(input, output, predicates) {
+function LoMatch(input, output, primers) {
   var funcs;
 
+  primers = Array.isArray(primers) ? primers : [];
   if (Array.isArray(input)) {
-    predicates = _.concat(predicates, generate.generateArrayPredicates(input, output));
+    primers = _.concat(primers, generate.generateArrayArgs(input, output));
     funcs = functions.funcs.array;
   }
   else if (_.isString(input)) {
-    predicates = _.concat(predicates, generate.generateStringPredicates(input, output));
+    primers = _.concat(primers, generate.generateStringArgs(input, output));
     funcs = functions.funcs.string;
   }
   else if (_.isObjectLike(input)) {
-    predicates = _.concat(predicates, generate.generateObjectPredicates(input, output));
+    primers = _.concat(primers, generate.generateObjectArgs(input, output));
     funcs = functions.funcs.object;
   }
-  return _.concat(match(input, output, predicates, funcs), matchLang(input, output));
+  return _.concat(match(input, output, primers, funcs), matchLang(input, output));
 }
 
 module.exports = {

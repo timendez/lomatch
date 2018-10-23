@@ -31,7 +31,7 @@ describe('Strings', () => {
   describe('_.endsWith', () => {
     it('without a secondary predicate evaluating to true', () => {
       var matches = lomatch.LoMatch('abc', true, []);
-      var expectedMatch = {func: '_.endsWith', predicates: 'c'};
+      var expectedMatch = {func: '_.endsWith', args: 'c'};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -88,21 +88,21 @@ describe('Strings', () => {
   describe('_.pad', () => {
     it('with a single predicate', () => {
       var matches = lomatch.LoMatch('abc', '  abc   ', []);
-      var expectedMatch = {func: '_.pad', predicates: 8};
+      var expectedMatch = {func: '_.pad', args: 8};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
   describe('_.padEnd', () => {
     it('with a single predicate', () => {
       var matches = lomatch.LoMatch('abc', 'abc   ', []);
-      var expectedMatch = {func: '_.padEnd', predicates: 6};
+      var expectedMatch = {func: '_.padEnd', args: 6};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
   describe('_.padStart', () => {
     it('with a single predicate', () => {
       var matches = lomatch.LoMatch('abc', '   abc', []);
-      var expectedMatch = {func: '_.padStart', predicates: 6};
+      var expectedMatch = {func: '_.padStart', args: 6};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -116,14 +116,14 @@ describe('Strings', () => {
   describe('_.repeat', () => {
     it('with a normal string', () => {
       var matches = lomatch.LoMatch('*', '***', []);
-      var expectedMatch = {func: '_.repeat', predicates: 3};
+      var expectedMatch = {func: '_.repeat', args: 3};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
   describe('_.replace', () => {
     it('with a normal string', () => {
       var matches = lomatch.LoMatch('Hi Fred', 'Hi Barney', []);
-      var expectedMatch = {func: '_.replace', predicates: ['Fred', 'Barney']};
+      var expectedMatch = {func: '_.replace', args: ['Fred', 'Barney']};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -142,12 +142,12 @@ describe('Strings', () => {
   describe('_.split', () => {
     it('with a kebab-case string', () => {
       var matches = lomatch.LoMatch('a-b-c', ['a', 'b'], []);
-      var expectedMatch = {func: '_.split', predicates: ['-', 2]};
+      var expectedMatch = {func: '_.split', args: ['-', 2]};
       expect(matches).to.deep.include(expectedMatch);
     });
     it('with a larger string and a trailing double character delimeter', () => {
       var matches = lomatch.LoMatch('a//b//c//d//e//f//g//h//i//j//k//', ['a', 'b', 'c', 'd', 'e', 'f', 'g'], []);
-      var expectedMatch = {func: '_.split', predicates: ['//', 7]};
+      var expectedMatch = {func: '_.split', args: ['//', 7]};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -161,7 +161,7 @@ describe('Strings', () => {
   describe('_.startsWith', () => {
     it('with a normal string', () => {
       var matches = lomatch.LoMatch('abc', true, []);
-      var expectedMatch = {func: '_.startsWith', predicates: 'a'};
+      var expectedMatch = {func: '_.startsWith', args: 'a'};
       expect(matches).to.deep.include(expectedMatch);
     });
   });

@@ -1,44 +1,44 @@
 const _ = require('lodash');
 
 function generateAllCombinations(input) {
-  var predicates = [];
+  var args = [];
   var indices = [];
   _.forEach(input, (val, idx) => {
-    _.forEach(_.clone(predicates), (rest, index) => {
-      predicates.push([...rest, val]);
+    _.forEach(_.clone(args), (rest, index) => {
+      args.push([...rest, val]);
       indices.push([...indices[index], idx]);
     });
-    predicates.push([val]);
+    args.push([val]);
     indices.push([idx]);
   });
-  return _.concat(predicates, indices);
+  return _.concat(args, indices);
 }
 
-function generateArrayPredicates(input, output) {
+function generateArrayArgs(input, output) {
   var i = input.length;
-  var predicates = _.concat([output], output, input);
-  predicates.push(_.difference(input, [output]));
-  predicates.push(_.difference(input, output));
-  predicates.push(_.difference(output, input));
-  predicates.push(_.intersection(input, Array.isArray(output) ? output : [output]));
-  predicates = _.concat(predicates, generateAllCombinations(input));
+  var args = _.concat([output], output, input);
+  args.push(_.difference(input, [output]));
+  args.push(_.difference(input, output));
+  args.push(_.difference(output, input));
+  args.push(_.intersection(input, Array.isArray(output) ? output : [output]));
+  args = _.concat(args, generateAllCombinations(input));
   while (i-- > -1 * input.length) {
-    predicates.push(i);
+    args.push(i);
   }
-  return predicates;
+  return args;
 }
 
-function generateStringPredicates(input, output) {
-  var predicates = [output, input, output.length, input.length, _.words(input), _.words(output)];
+function generateStringArgs(input, output) {
+  var args = [output, input, output.length, input.length, _.words(input), _.words(output)];
   var i = input.length;
   while (i--) {
     var k = i - 1;
     while (k-- > 0) {
-      predicates.push(input.substring(k, i));
+      args.push(input.substring(k, i));
     }
-    predicates.push(input.charAt(i));
+    args.push(input.charAt(i));
   }
-  return _.uniq(_.flatten(predicates));
+  return _.uniq(_.flatten(args));
 }
 
 function generateObjectPaths(input, output, path, successPaths, allPaths) {
@@ -107,29 +107,29 @@ function generateValues(input, values) {
   return values;
 }
 
-function generateObjectPredicates(input, output) {
-  var predicates = [output, input];
-  predicates.push(_.omit(input, _.keys(output)));
-  predicates.push(_.omit(output, _.keys(input)));
-  predicates.push(_.filter(input, output));
-  predicates = _.concat(predicates, generateKeys(input, []));
-  predicates = _.concat(predicates, generateValues(input, []));
+function generateObjectArgs(input, output) {
+  var args = [output, input];
+  args.push(_.omit(input, _.keys(output)));
+  args.push(_.omit(output, _.keys(input)));
+  args.push(_.filter(input, output));
+  args = _.concat(args, generateKeys(input, []));
+  args = _.concat(args, generateValues(input, []));
   if (_.isObjectLike(output) && !Array.isArray(output)) {
-    predicates.push(_.keys(_.omit(input, _.keys(output))));
-    predicates.push(_.keys(_.pick(input, _.keys(output))));
+    args.push(_.keys(_.omit(input, _.keys(output))));
+    args.push(_.keys(_.pick(input, _.keys(output))));
   }
   var generatedObjectPaths = generateObjectPaths(input, Array.isArray(output) ? output : [output], '', [], []);
-  predicates = _.concat(predicates, generatedObjectPaths.allPaths);
-  predicates.push(generatedObjectPaths.successPaths);
+  args = _.concat(args, generatedObjectPaths.allPaths);
+  args.push(generatedObjectPaths.successPaths);
   var i = input.length;
   while (i--) {
-    predicates.push(input.charAt(i));
+    args.push(input.charAt(i));
   }
-  return _.uniqWith(predicates, _.isEqual);
+  return _.uniqWith(args, _.isEqual);
 }
 
 module.exports = {
-  generateArrayPredicates: generateArrayPredicates,
-  generateStringPredicates: generateStringPredicates,
-  generateObjectPredicates: generateObjectPredicates,
+  generateArrayArgs: generateArrayArgs,
+  generateStringArgs: generateStringArgs,
+  generateObjectArgs: generateObjectArgs,
 }

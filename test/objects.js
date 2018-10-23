@@ -6,14 +6,14 @@ describe('Objects', () => {
   describe('_.assign', () => {
     it('with two objects', () => {
       var matches = lomatch.LoMatch({'a': 0}, {'a': 0, 'b': 1}, []);
-      var expectedMatch = {func: '_.assign', predicates: {'b': 1}};
+      var expectedMatch = {func: '_.assign', args: {'b': 1}};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
   describe('_.at', () => {
     it('with a complex deep object', () => {
       var matches = lomatch.LoMatch({ 'a': [{ 'b': { 'c': 3 } }, 4] }, [3, 4], []);
-      var expectedMatch = {func: '_.at', predicates: ['a[0].b.c', 'a[1]']};
+      var expectedMatch = {func: '_.at', args: ['a[0].b.c', 'a[1]']};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -25,7 +25,7 @@ describe('Objects', () => {
         'pebbles': { 'age': 1,  'active': true }
       };
       var matches = lomatch.LoMatch(users, 'pebbles', []);
-      var expectedMatch = {func: '_.findKey', predicates: { 'age': 1, 'active': true }};
+      var expectedMatch = {func: '_.findKey', args: { 'age': 1, 'active': true }};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -37,7 +37,7 @@ describe('Objects', () => {
         'pebbles': { 'age': 1,  'active': true }
       };
       var matches = lomatch.LoMatch(users, 'barney', []);
-      var expectedMatch = {func: '_.findLastKey', predicates: { 'age': 36, 'active': true }};
+      var expectedMatch = {func: '_.findLastKey', args: { 'age': 36, 'active': true }};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -45,7 +45,7 @@ describe('Objects', () => {
     it('with a normal object', () => {
       var object = { 'a': [{ 'b': { 'c': 3 } }] };
       var matches = lomatch.LoMatch(object, 3, []);
-      var expectedMatch = {func: '_.get', predicates: 'a[0].b.c'};
+      var expectedMatch = {func: '_.get', args: 'a[0].b.c'};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -53,7 +53,7 @@ describe('Objects', () => {
     it('with a normal object', () => {
       var object = { 'a': { 'b': 2 } };
       var matches = lomatch.LoMatch(object, true, []);
-      var expectedMatch = {func: '_.has', predicates: 'a'};
+      var expectedMatch = {func: '_.has', args: 'a'};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -93,7 +93,7 @@ describe('Objects', () => {
     it('with a flat object', () => {
       var object = { 'a': 1, 'b': '2', 'c': 3 };
       var matches = lomatch.LoMatch(object, {'b': '2'}, []);
-      var expectedMatch = {func: '_.omit', predicates: ['a', 'c']};
+      var expectedMatch = {func: '_.omit', args: ['a', 'c']};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -101,7 +101,7 @@ describe('Objects', () => {
     it('with an object', () => {
       var object = { 'a': 1, 'b': '2', 'c': 3 };
       var matches = lomatch.LoMatch(object, {'a': 1, 'c': 3}, []);
-      var expectedMatch = {func: '_.pick', predicates: ['a', 'c']};
+      var expectedMatch = {func: '_.pick', args: ['a', 'c']};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -109,7 +109,7 @@ describe('Objects', () => {
     it('with an object', () => {
       var object = { 'a': [{ 'b': { 'c1': 3, 'c2': _.constant(4) } }] };
       var matches = lomatch.LoMatch(object, 3, []);
-      var expectedMatch = {func: '_.result', predicates: 'a[0].b.c1'};
+      var expectedMatch = {func: '_.result', args: 'a[0].b.c1'};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
@@ -140,7 +140,7 @@ describe('Objects', () => {
     it('with an object', () => {
       var object = { 'a': [{ 'b': { 'c': 7 } }] };
       var matches = lomatch.LoMatch(object, { 'a': [{ 'b': {} }] }, []);
-      var expectedMatch = {func: '_.unset', predicates: 'a[0].b.c'};
+      var expectedMatch = {func: '_.unset', args: 'a[0].b.c'};
       expect(matches).to.deep.include(expectedMatch);
     });
   });
