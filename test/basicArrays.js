@@ -16,36 +16,36 @@ describe('Arrays', () => {
           { 'user': 'pebbles', 'active': true }
         ];
         var matches = lomatch.LoMatch(input, output, [{ 'user': 'barney', 'active': false }]);
-        var expectedMatch = {func: '_.dropWhile', predicates: { 'user': 'barney', 'active': false }};
+        var expectedMatch = {func: '_.dropWhile', args: { 'user': 'barney', 'active': false }};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.join', () => {
       it('with a simple array', () => {
         var matches = lomatch.LoMatch([1, 2, 3], '1, 2, 3', [', ']);
-        var expectedMatch = {func: '_.join', predicates: ', '};
+        var expectedMatch = {func: '_.join', args: ', '};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.zipObject', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch(['a', 'b'], { 'a': 1, 'b': 2 }, [[1, 2]]);
-        var expectedMatch = {func: '_.zipObject', predicates: [1, 2]};
+        var expectedMatch = {func: '_.zipObject', args: [1, 2]};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
   });
 
-  describe('with no predicate or a single predicates', () => {
+  describe('with no predicate or a single args', () => {
     describe('_.chunk', () => {
       it('with a predicate of 2', () => {
         var matches = lomatch.LoMatch(['a', 'b', 'c', 'd'], [['a', 'b'], ['c', 'd']], []);
-        var expectedMatches = {func: '_.chunk', predicates: 2};
+        var expectedMatches = {func: '_.chunk', args: 2};
         expect(matches).to.deep.include(expectedMatches);
       });
       it('with a predicate of 3', () => {
         var matches = lomatch.LoMatch(['a', 'b', 'c', 'd'], [['a', 'b', 'c'], ['d']], []);
-        var expectedMatches = {func: '_.chunk', predicates: 3};
+        var expectedMatches = {func: '_.chunk', args: 3};
         expect(matches).to.deep.include(expectedMatches);
       });
     });
@@ -59,24 +59,24 @@ describe('Arrays', () => {
     describe('_.concat', () => {
       it('with a predicate of 1', () => {
         var matches = lomatch.LoMatch(['a', 'b'], ['a', 'b', 'c'], []);
-        var expectedMatch = {func: '_.concat', predicates: 'c'};
+        var expectedMatch = {func: '_.concat', args: 'c'};
         expect(matches).to.deep.include(expectedMatch);
       });
       it('with a predicate of 2', () => {
         var matches = lomatch.LoMatch(['a', 'b'], ['a', 'b', 'c', 'd'], []);
-        var expectedMatch = {func: '_.concat', predicates: ['c', 'd']};
+        var expectedMatch = {func: '_.concat', args: ['c', 'd']};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.difference', () => {
       it('with a predicate of 1', () => {
         var matches = lomatch.LoMatch([2, 1, 5], [2, 5], []);
-        var expectedMatch = {func: '_.difference', predicates: [1]};
+        var expectedMatch = {func: '_.difference', args: [1]};
         expect(matches).to.deep.include(expectedMatch);
       });
       it('with a predicate of 2', () => {
         var matches = lomatch.LoMatch([2, 1, 5], [1], []);
-        var expectedMatch = {func: '_.difference', predicates: [2, 5]};
+        var expectedMatch = {func: '_.difference', args: [2, 5]};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -88,12 +88,12 @@ describe('Arrays', () => {
       });
       it('with a predicate of 1', () => {
         var matches = lomatch.LoMatch([1, 2, 3], [3], []);
-        var expectedMatch = {func: '_.drop', predicates: 2};
+        var expectedMatch = {func: '_.drop', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
       it('with a predicate of 1 and a result of nothing dropped', () => {
         var matches = lomatch.LoMatch([1, 2, 3], [1, 2, 3], []);
-        var expectedMatch = {func: '_.drop', predicates: 0};
+        var expectedMatch = {func: '_.drop', args: 0};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -105,33 +105,33 @@ describe('Arrays', () => {
       });
       it('with a predicate of 1', () => {
         var matches = lomatch.LoMatch([1, 2, 3], [1], []);
-        var expectedMatch = {func: '_.dropRight', predicates: 2};
+        var expectedMatch = {func: '_.dropRight', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
       it('with a predicate of 1 and a result of nothing dropped', () => {
         var matches = lomatch.LoMatch([1, 2, 3], [1, 2, 3], []);
-        var expectedMatch = {func: '_.dropRight', predicates: 0};
+        var expectedMatch = {func: '_.dropRight', args: 0};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.fill', () => {
       it('with a single value', () => {
         var matches = lomatch.LoMatch([1, 2], [1, 1], []);
-        var expectedMatch = {func: '_.fill', predicates: 1};
+        var expectedMatch = {func: '_.fill', args: 1};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.findIndex', () => {
       it('with one match', () => {
         var matches = lomatch.LoMatch([{'yep': 1}, {'yep': 2}, {'yep': 3}, {'yep': 4}], 1, []);
-        var expectedMatch = {func: '_.findIndex', predicates: {'yep': 2}};
+        var expectedMatch = {func: '_.findIndex', args: {'yep': 2}};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.findLastIndex', () => {
       it('with one match', () => {
         var matches = lomatch.LoMatch([{'yep': 1}, {'yep': 2}, {'yep': 2}, {'yep': 4}], 2, []);
-        var expectedMatch = {func: '_.findLastIndex', predicates: {'yep': 2}};
+        var expectedMatch = {func: '_.findLastIndex', args: {'yep': 2}};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -152,7 +152,7 @@ describe('Arrays', () => {
     describe('_.flattenDepth', () => {
       it('with a depth of 2', () => {
         var matches = lomatch.LoMatch([1, 2, [3, 4, [5, [6]]]], [1, 2, 3, 4, 5, [6]], []);
-        var expectedMatch = {func: '_.flattenDepth', predicates: 2};
+        var expectedMatch = {func: '_.flattenDepth', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -173,7 +173,7 @@ describe('Arrays', () => {
     describe('_.indexOf', () => {
       it('with a single level array', () => {
         var matches = lomatch.LoMatch([1, 2, 3], 1, []);
-        var expectedMatch = {func: '_.indexOf', predicates: 2};
+        var expectedMatch = {func: '_.indexOf', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -194,40 +194,40 @@ describe('Arrays', () => {
     describe('_.lastIndexOf', () => {
       it('with a predicate and no fromIndex', () => {
         var matches = lomatch.LoMatch([1, 2, 3, 4, 3, 4], 4, []);
-        var expectedMatch = {func: '_.lastIndexOf', predicates: 3};
+        var expectedMatch = {func: '_.lastIndexOf', args: 3};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.nth', () => {
       it('with a simple array', () => {
         var matches = lomatch.LoMatch([1, 2, 3], 2, []);
-        var expectedMatch = {func: '_.nth', predicates: 1};
+        var expectedMatch = {func: '_.nth', args: 1};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.pull', () => {
       it('with a single value to remove', () => {
         var matches = lomatch.LoMatch([1, 2, 3, 2, 2], [1, 3], []);
-        var expectedMatch = {func: '_.pull', predicates: 2};
+        var expectedMatch = {func: '_.pull', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.pullAll', () => {
       it('with a predicate of 2 elements', () => {
         var matches = lomatch.LoMatch([1, 2, 3, 3, 5, 3], [1, 5], []);
-        var expectedMatch = {func: '_.pullAll', predicates: [2, 3]};
+        var expectedMatch = {func: '_.pullAll', args: [2, 3]};
         expect(matches).to.deep.include(expectedMatch);
       });
       it("with a predicate of 6 elements", () => {
         var matches = lomatch.LoMatch([1, 2, 8, 3, 5, 3, 6, 7, 8, 9], [1, 5], []);
-        var expectedMatch = {func: '_.pullAll', predicates: [2, 3, 6, 7, 8, 9]};
+        var expectedMatch = {func: '_.pullAll', args: [2, 3, 6, 7, 8, 9]};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.pullAt', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch(['a', 'b', 'c', 'd'], ['a', 'c'], []);
-        var expectedMatch = {func: '_.pullAt', predicates: [0, 2]};
+        var expectedMatch = {func: '_.pullAt', args: [0, 2]};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -241,28 +241,28 @@ describe('Arrays', () => {
     describe('_.sortedIndex', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch([0, 3, 4], 1, []);
-        var expectedMatch = {func: '_.sortedIndex', predicates: 1};
+        var expectedMatch = {func: '_.sortedIndex', args: 1};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.sortedIndexOf', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch([4, 5, 5, 5, 6], 1, []);
-        var expectedMatch = {func: '_.sortedIndexOf', predicates: 5};
+        var expectedMatch = {func: '_.sortedIndexOf', args: 5};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.sortedLastIndex', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch([4, 5, 5, 5, 6], 4, []);
-        var expectedMatch = {func: '_.sortedLastIndex', predicates: 5};
+        var expectedMatch = {func: '_.sortedLastIndex', args: 5};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.sortedLastIndexOf', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch([4, 5, 5, 5, 6], 3, []);
-        var expectedMatch = {func: '_.sortedLastIndexOf', predicates: 5};
+        var expectedMatch = {func: '_.sortedLastIndexOf', args: 5};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -288,7 +288,7 @@ describe('Arrays', () => {
       });
       it('with an argument', () => {
         var matches = lomatch.LoMatch([1, 2, 3], [1, 2], []);
-        var expectedMatch = {func: '_.take', predicates: 2};
+        var expectedMatch = {func: '_.take', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -300,7 +300,7 @@ describe('Arrays', () => {
       });
       it('with an argument', () => {
         var matches = lomatch.LoMatch([1, 2, 3], [2, 3], []);
-        var expectedMatch = {func: '_.takeRight', predicates: 2};
+        var expectedMatch = {func: '_.takeRight', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -312,7 +312,7 @@ describe('Arrays', () => {
           { 'user': 'pebbles', 'active': false }
         ];
         var matches = lomatch.LoMatch(input, [{ 'user': 'pebbles', 'active': false }], []);
-        var expectedMatch = {func: '_.takeRightWhile', predicates: { user: 'pebbles', active: false }};
+        var expectedMatch = {func: '_.takeRightWhile', args: { user: 'pebbles', active: false }};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -324,7 +324,7 @@ describe('Arrays', () => {
           { 'user': 'pebbles', 'active': true }
         ];
         var matches = lomatch.LoMatch(input, [{ 'user': 'barney', 'active': false }], []);
-        var expectedMatch = {func: '_.takeWhile', predicates: { user: 'barney', active: false }};
+        var expectedMatch = {func: '_.takeWhile', args: { user: 'barney', active: false }};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -338,7 +338,7 @@ describe('Arrays', () => {
     describe('_.uniqBy', () => {
       it('with an array of objects', () => {
         var matches = lomatch.LoMatch([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }, { 'x': 2 }], []);
-        var expectedMatch = {func: '_.uniqBy', predicates: {'x': 1}};
+        var expectedMatch = {func: '_.uniqBy', args: {'x': 1}};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
@@ -352,14 +352,14 @@ describe('Arrays', () => {
     describe('_.without', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch([2, 1, 2, 3], [1, 3], []);
-        var expectedMatch = {func: '_.without', predicates: 2};
+        var expectedMatch = {func: '_.without', args: 2};
         expect(matches).to.deep.include(expectedMatch);
       });
     });
     describe('_.xor', () => {
       it('with a small array', () => {
         var matches = lomatch.LoMatch([2, 1, 3, 1, 2], [1, 3], []);
-        var expectedMatch = {func: '_.xor', predicates: [2]};
+        var expectedMatch = {func: '_.xor', args: [2]};
         expect(matches).to.deep.include(expectedMatch);
       });
     });

@@ -2,7 +2,7 @@ const _ = require('lodash');
 const expect = require('chai').expect;
 const lomatch = require('../lomatch.js');
 
-describe('Iteratees as predicates', () => {
+describe('Iteratees as args', () => {
   describe('with arrays', () => {
     describe('_.uniqBy', () => {
       it('with floor', () => {
