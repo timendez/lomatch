@@ -22,6 +22,19 @@ npm install lomatch
 yarn add lomatch
 ```
 
+## Usage
+```javascript
+const { LoMatch } = require('lomatch');
+let results = LoMatch(input, output, primers);
+console.log(results);
+```
+**input** - an object, array, or string that you currently have
+**output** - the desired format you want your data in
+**primers** - an array of values that you think will help LoMatch figure out a result
+**results** - an array of objects containing a `func` and `args` that when in combination with your input can get you to your output
+
+Examples below
+
 ## Arrays
 ### Example
 I have a starting array of `[1, 2, 3, 2, 2]`, and I want a final array of `[1, 3]`. I don't know which Lodash functions I need to use in order to get there, so I'll use LoMatch!
