@@ -5,6 +5,9 @@
 # LoMatch
 LoMatch is a tool that figures out what LoDash function you should use given an input, desired output, and predicate.
 
+## Online Tool
+https://www.lomatch.online
+
 ## Installation
 ### npm
 ```
