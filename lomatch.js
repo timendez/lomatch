@@ -61,6 +61,7 @@ function matchLang(input, output) {
 function LoMatch(input, output, predicates) {
   var funcs;
 
+  predicates = Array.isArray(predicates) ? predicates : [];
   if (Array.isArray(input)) {
     predicates = _.concat(predicates, generate.generateArrayPredicates(input, output));
     funcs = functions.funcs.array;
