@@ -8,7 +8,7 @@ LoMatch is a tool that figures out what Lodash function you should use given an 
 ## Online Tool
 LoMatch isn't likely to live inside of a project, but more likely to be used a few times throughout a project in order to determine what Lodash functions to use. Because of this, I created an online tool to use LoMatch. **You will almost always only need to use this tool and not need to install the npm module.**
 
-https://www.lomatch.online
+https://www.lomatch.online - please give it some time to load, hosted on the Heroku free tier.
 
 ## Installation
 LoMatch is available as an npm module if you so choose to include it in your project. This is the easiest way to install it:
