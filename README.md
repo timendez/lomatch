@@ -10,6 +10,8 @@ LoMatch isn't likely to live inside of a project, but more likely to be used a f
 
 https://www.lomatch.online - please give it some time to load, hosted on the Heroku free tier.
 
+https://lomatch.herokuapp.com as a backup because the domain is expiring late October, 2020 and namecheap wants 35 dang dollarydoos for renewal.
+
 ## Installation
 LoMatch is available as an npm module if you so choose to include it in your project. This is the easiest way to install it:
 ### npm
